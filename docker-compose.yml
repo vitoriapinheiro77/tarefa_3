@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Banco de Dados Relacional (MySQL)
+  
   db_mysql:
     image: mysql:8.0
     container_name: mysql_container
@@ -16,7 +16,7 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
 
-  # Banco de Dados NoSQL (MongoDB)
+  
   db_mongo:
     image: mongo:latest
     container_name: mongo_container
@@ -25,13 +25,12 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: mongo_password
     ports:
-      - "2717:27017" # Mudei a porta externa para 2717 para evitar conflitos comuns
+      - "2717:27017" 
     networks:
       - rede_bancos
     volumes:
       - ./data/mongo:/data/db
 
-# Network personalizada
 networks:
   rede_bancos:
     driver: bridge
